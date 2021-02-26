@@ -89,6 +89,33 @@ Note:
 * If the installation of wxpython is not success, perform `sudo apt-get install build-essential libgtk-3-dev`
 * Some times the installation of wxpython takes longer time (>30 minutes).
 
+<strong>On RaspberryPI:</strong>
+
+Development environment
+
+* Raspberry Pi OS - aarch64 in Ubuntu 20.04 bit
+* Python - 3.6.9
+* wxgtk-4.0
+* pyserial - 3.5
+* pyusb - 1.1.1
+* libusb - 1.0.23b7
+* libusb1 - 1.9
+* pyinstaller - 4.2
+
+```shell
+sudo add-apt-repository ppa:swt-techie/wxpython4
+sudo apt-get update
+sudo apt-get install python3-wxgtk4.0
+sudo pip3 install pyserial
+sudo pip3 install pyusb
+sudo pip3 install libusb
+sudo pip3 install libusb1
+sudo pip3 install pyinstaller
+```
+
+Note:
+* If the installation of wxpython is not success, perform `sudo apt-get install build-essential libgtk-3-dev`
+
 ## Interpret python source
 
 This is to ensure that the source can be interpreted without any error
@@ -142,6 +169,11 @@ pyinstaller Cricket-Linux.spec
 ```shell
 pyinstaller Cricket-Mac.spec
 ```
+<strong>On Raspberry Pi:</strong>
+
+```shell
+pyinstaller Cricket-Linux.spec
+```
 
 The executable 'Cricket' show up in `destdir/cricket/src/dist/`.
 
@@ -156,7 +188,7 @@ Run the Inno Setup Script file 'Cricket-Windows' which is in `destdir/installerS
 The App Installer 'cricket-<ver tag>-windows-installer' show up in `destdir/AppInstaller/`.
 
 
-<strong>On Linux:</strong>
+<strong>On Linux and Raspberry Pi :</strong>
 
 Create Linux deb package using Debreate Debian package builder
 
@@ -183,8 +215,7 @@ The App Installer 'cricket-<ver tag>-mac-installer' show up in `destdir/AppInsta
 
 Create a release directory with release version `cricket-<ver tag>-windows-installer`
 
-Move the App Installer 'cricket-<ver tag>-windows-installer' into the release directory and zip (compress) it, 
-the name of zipped folder should be  `cricket-<ver tag>-windows-installer.zip`.
+Move the App Installer 'cricket-<ver tag>-windows-installer' into the release directory and zip (compress) it, the name of zipped folder should be  `cricket-<ver tag>-windows-installer.zip`.
 
 The Application Installer must be digitally signed before it can be deployed.
 
@@ -192,8 +223,16 @@ The Application Installer must be digitally signed before it can be deployed.
 
 Create a release directory with release version `cricket-<ver tag>-linux-installer.deb`
 
+Move the App Installer 'cricket-<ver tag>-windows-installer' into the release directory and zip (compress) it, the name of zipped folder should be  `cricket-<ver tag>-linux-installer.deb.zip`.
+
+The Application Installer must be digitally signed before it can be deployed.
+
+<strong>On Raspberry PI:</strong>
+
+Create a release directory with release version `cricket-<ver tag>-linux-installer.deb`
+
 Move the App Installer 'cricket-<ver tag>-windows-installer' into the release directory and zip (compress) it, 
-the name of zipped folder should be  `cricket-<ver tag>-linux-installer.deb.zip`.
+the name of zipped folder should be  `cricket-<ver tag>-RPI-linux-installer.deb.zip`.
 
 The Application Installer must be digitally signed before it can be deployed.
 
@@ -201,8 +240,7 @@ The Application Installer must be digitally signed before it can be deployed.
 
 Create a release directory with release version `cricket-<ver tag>-mac-installer.pkg`.
 
-Move the App Installer 'UI3141-3201-Installer' into the release directory and zip (compress) it, 
-the name of zipped folder should be  `cricket-<ver tag>-mac-installer.pkg.zip`.
+Move the App Installer 'UI3141-3201-Installer' into the release directory and zip (compress) it, the name of zipped folder should be  `cricket-<ver tag>-mac-installer.pkg.zip`.
 
 The Mac application and the Application Installer must be signed and notarized before it can be deployed.
 
